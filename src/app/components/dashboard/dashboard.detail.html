@@ -1,0 +1,44 @@
+<mat-card *ngIf="dashBoardItem">
+    <mat-card-header>
+        <mat-card-title>{{dashBoardItem.name}}</mat-card-title>
+        <mat-card-subtitle>
+            <div>{{dashBoardItem.description}}</div>
+            <div>{{dashBoardItem.dashboardType}}</div>
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <div *ngIf="dashBoardItem.elements && dashBoardItem.elements.length>0">
+            <!-- <h2>Lets display the Chart Elements</h2> -->
+            <table mat-table [dataSource]="dashBoardItem.elements">
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef>Chart Name</th>
+                    <td mat-cell *matCellDef="let element">
+                       <a [routerLink]="['/chart/edit',dashBoardId,element.id]">{{element.name}}</a>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef>Chart Type</th>
+                    <td mat-cell *matCellDef="let element">{{element.chartType}}</td>
+                </ng-container>
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef>Actions</th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-button color="warn" (click)="deleteChart(element.id)">Delete</button>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+        <!-- <mat-toolbar color="accent"
+            *ngIf="!dashBoardItem.elements ||  (dashBoardItem.elements && dashBoardItem.elements.length===0)"> -->
+        <div class="userMessage" *ngIf="!dashBoardItem.elements ||  (dashBoardItem.elements && dashBoardItem.elements.length===0)">
+            <span>There are no Charts</span>
+        </div>
+        
+        <!-- </mat-toolbar> -->
+        <a mat-raised-button color="primary" [routerLink]="['/chart/create',dashBoardItem.id]" style="margin-top: 8px;">Create Chart</a>
+    </mat-card-content>
+</mat-card>
+<mat-divider></mat-divider>
+<app-chart-map-display [layout]="currentChartLayout" [dashBoardCharts]="dashBoardItem.elements"></app-chart-map-display>

@@ -1,0 +1,26 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{dashBoardName}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="dashBoardFormGroup" (submit)="createDashBoard()">
+            <mat-form-field>
+                <input matInput placeholder="Enter Dashboard Name" formControlName="name" />
+                <mat-error *ngIf="dashBoardFormGroup.get('name')?.invalid">Dashboard Name is required</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Enter Dashboard Description within 20 letters"
+                    formControlName="description" />
+                <mat-error *ngIf="dashBoardFormGroup.get('name')?.invalid">Dashboard Description is required and must be less than 20 characters</mat-error>
+            </mat-form-field>
+            <mat-form-field *ngIf="dashboardTypes && dashboardTypes.length>0">
+                <mat-label>Choose an option</mat-label>
+                <mat-select formControlName="layout">
+                    <mat-option *ngFor="let dt of dashboardTypes" [value]="dt">{{dt}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="dashBoardFormGroup.get('layout')?.invalid">Select a Layout</mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit" [disabled]="dashBoardFormGroup.invalid || (isEditMode && !isEditEligible)">{{createButtonText}}</button>
+        </form>
+    </mat-card-content>
+</mat-card>

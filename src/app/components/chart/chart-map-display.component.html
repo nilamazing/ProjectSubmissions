@@ -1,0 +1,15 @@
+<div class="chartsContainer" *ngIf="dashBoardCharts.length>0">
+    <mat-grid-list [cols]="layout" rowHeight="2:1">
+        <mat-grid-tile *ngFor="let chartElem of dashBoardCharts">
+            <app-chart-core [chartContainerId]="chartElem.id" [chartElementConfig]="chartElem.chartConfig"></app-chart-core>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+<div class="userMessage" *ngIf="dashBoardCharts.length===0">
+    <span>Nothing to show here</span>
+    <!-- <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <span>Nothing to show here</span> -->
+        <!-- </mat-toolbar-row> -->
+    <!-- </mat-toolbar> -->
+</div>

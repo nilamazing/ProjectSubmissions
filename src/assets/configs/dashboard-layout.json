@@ -1,0 +1,22 @@
+[
+    {
+        "type": "TwoColumnLayout",
+        "desc": "Dashboard with a two column layout",
+        "columns":2,
+        "elements":[
+            "SplineChart",
+            "PieChart",
+            "InvertedSplineChart"
+        ]
+    },
+    {
+        "type": "ThreeColumnLayout",
+        "desc": "Dashboard with a three column layout",
+        "columns":3,
+        "elements":[
+            "BasicColumnChart",
+            "BasicAreaChart",
+            "SplineChart"
+        ]
+    }
+]

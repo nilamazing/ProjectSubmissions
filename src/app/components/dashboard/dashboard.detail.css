@@ -1,0 +1,16 @@
+mat-card-content button{
+    margin-top: 20px;
+}
+table {
+    width: 100%;
+  }
+
+.userMessage{
+    background-color: #a86532;
+    padding: 10px 0px 10px 0px;
+}
+.userMessage span{
+  margin-left: 40%;
+  font-size: larger;
+  font-weight: 500;
+}

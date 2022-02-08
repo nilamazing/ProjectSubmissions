@@ -1,0 +1,10 @@
+[
+    {
+        "name": "TwoColumnLayout",
+        "columns": 2
+    },
+    {
+        "name": "ThreeColumnLayout",
+        "columns": 3
+    }
+]

@@ -1,0 +1,23 @@
+<!-- <div *ngIf="isDataLoaded"> -->
+<mat-accordion *ngIf="userDashboards && userDashboards.length>0">
+    <mat-expansion-panel *ngFor="let usrDashBoard of userDashboards">
+        <mat-expansion-panel-header>
+            <p>{{usrDashBoard.name}}</p>
+        </mat-expansion-panel-header>
+        <p>{{usrDashBoard.description}}</p>
+        <span>Dashboard Layout: {{usrDashBoard.dashboardType}}</span>
+        <h4>No. of Charts: {{usrDashBoard.elements.length}}</h4>
+        <mat-action-row>
+            <!-- <button mat-button color="primary" (click)="navigateToBlogDetail(usrDashBoard.id)">Detail</button> -->
+            <a mat-button color="primary" [routerLink]="['/dashboard/detail',usrDashBoard.id]">Detail</a>
+            <a mat-button color="accent" [routerLink]="['/dashboard/edit',usrDashBoard.id]">Edit</a>
+            <button mat-button color="warn" (click)="deleteDashBoard(usrDashBoard.id)">Delete</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+</mat-accordion>
+<!-- <mat-toolbar color="accent" *ngIf="userDashboards.length===0"> -->
+<div class="userMessage" *ngIf="userDashboards.length===0">
+    <span>There are no Dashboards</span>
+</div>
+<!-- </mat-toolbar> -->
+<!-- </div> -->

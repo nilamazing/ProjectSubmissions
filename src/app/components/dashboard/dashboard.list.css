@@ -1,0 +1,12 @@
+.userMessage{
+    background-color: #a86532;
+    padding: 20px 0px 20px 0px;
+}
+.userMessage span{
+  margin-left: 40%;
+  font-size: larger;
+  font-weight: 500;
+}
+/*.noDashboardsInfo{
+    margin-left: 40%;
+} */
